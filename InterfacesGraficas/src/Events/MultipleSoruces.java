@@ -10,6 +10,7 @@ public class MultipleSoruces {
 		//Instanciamos el objeto de la ventana
 		Marco ventana = new Marco();
 		ventana.setVisible(true);
+		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 }
