@@ -1,0 +1,69 @@
+package Events;
+
+import java.awt.Color;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class MultipleSoruces {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Marco ventana = new Marco();
+		ventana.setVisible(true);
+	}
+
+}
+
+class Marco extends JFrame {
+	public Marco (){
+		setTitle("Prueba acciones multiples");
+		setBounds(600, 350, 600, 300);
+		
+		PanelAccion lamina = new PanelAccion();
+		add(lamina);
+		
+	}
+}
+
+class PanelAccion extends JPanel {
+	public PanelAccion() {
+		ActionColor accionAmarillo = new ActionColor("Amarillo", new ImageIcon("src/graficos/image.png"), Color.YELLOW);
+		ActionColor accionAzul = new ActionColor("Azul", new ImageIcon("src/graficos/image.png"), Color.BLUE);
+		ActionColor accionRojo = new ActionColor("Rojo", new ImageIcon("src/graficos/image.png"), Color.RED);
+		
+		//JButton botonAmarillo = new JButton(accionAmarillo);
+		
+		add(new JButton(accionAmarillo));
+		add(new JButton(accionAzul));
+		add(new JButton(accionRojo));
+		
+		/*JButton botonAmarillo = new JButton("Amarillo");
+		
+		JButton botonRojo = new JButton("Rojo");
+		
+		JButton botonAzul = new JButton("Azul");
+		
+		add(botonAmarillo);
+		add(botonAzul);
+		add(botonRojo); */
+		
+		
+	}
+}
+
+class ActionColor extends AbstractAction {
+
+	public ActionColor (String nombre, Icon icono, Color color_boton) {
+		putValue(Action.NAME, nombre);
+		putValue(Action.SMALL_ICON, icono);
+		putValue(Action.SHORT_DESCRIPTION, "Poner la lamina de color " + nombre);
+		putValue("color_de_fondo", color_boton);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+}
