@@ -105,6 +105,10 @@ class LaminaCalculadora extends JPanel {
 		private String accion;
 		private double resultado;
 		
+		public AccionOrden () {
+			accion = "+";
+		}
+		
 		@Override //Funcion que desencadena el evento de accionar la operacion
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
