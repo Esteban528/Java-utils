@@ -27,90 +27,113 @@ class MenuProcesador extends JFrame {
 }
 
 class LaminaProcesador extends JPanel {
+	private JMenu fuente, estilo, tamaño;
+	private String fontName;
+	private int fontType, fontSize;
+	private Font font;
+	
+	private JLabel label1;
+	private JLabel label2;
+	private JLabel label3;
+	
+
 	public LaminaProcesador () {
 		setLayout(new BorderLayout());
 		JPanel laminaMenu = new JPanel(); 
-		
 		JMenuBar mibarra = new JMenuBar();
 		
-		JMenu fuente = new JMenu("Fuente");
-		JMenu estilo = new JMenu("Estilo");
-		JMenu tamagno = new JMenu("Tamaño");
+		fontName = "Monospaced";
+		fontType = Font.PLAIN;
+		fontSize = 12;
+		
+		
+		fuente = new JMenu("Fuente");
+		estilo = new JMenu("Estilo");
+		tamaño = new JMenu("Tamaño");
 		//----------------------------------------
-		JMenuItem arial = new JMenuItem("Arial");
-		arial.addActionListener(new ActionListener () {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				miArea.setFont(new Font("Arial", Font.PLAIN, 12));
-			}
-			
-		});
+		new Gestiona_menus (fuente, "Monospaced", "fuente", "monospaced");
+		new Gestiona_menus (fuente, "Courier", "fuente", "Courier");
+		new Gestiona_menus (fuente, "Verdana", "fuente", "Verdana");
+
+		//
 		
+		new Gestiona_menus (estilo, "Normal", "estilo", Integer.toString(Font.PLAIN));
+		new Gestiona_menus (estilo, "Negrita", "estilo", Integer.toString(Font.BOLD));
+		new Gestiona_menus (estilo, "Cursiva", "estilo", Integer.toString(Font.ITALIC));
 		
-		JMenuItem courier = new JMenuItem("Courier");
+		//
 		
-		courier.addActionListener(new ActionListener () {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				miArea.setFont(new Font("courier", Font.PLAIN, 12));
-			}
-			
-		});
+		new Gestiona_menus (tamaño, "12", "tamaño", Integer.toString(12));
+		new Gestiona_menus (tamaño, "16", "tamaño", Integer.toString(16));
+		new Gestiona_menus (tamaño, "24", "tamaño", Integer.toString(24));
+		new Gestiona_menus (tamaño, "28", "tamaño", Integer.toString(28));
 		
-		JMenuItem verdana = new JMenuItem("verdana");
-		verdana.addActionListener(new ActionListener () {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				miArea.setFont(new Font("verdana", Font.PLAIN, 12));
-			}
-			
-		});
-		
-		fuente.add(arial);
-		fuente.add(courier);
-		fuente.add(verdana);
-		//----------------------------------------
-		JMenuItem negrita = new JMenuItem("Negrita");
-		JMenuItem cursiva = new JMenuItem("Cursiva");
-		JMenuItem subrayada = new JMenuItem("Subrayada");
-		
-		estilo.add(negrita);
-		estilo.add(cursiva);
-		estilo.add(subrayada);
-		//----------------------------------------
-		JMenuItem tam_12 = new JMenuItem("12");
-		JMenuItem tam_16 = new JMenuItem("16");
-		JMenuItem tam_20 = new JMenuItem("20");
-		JMenuItem tam_24 = new JMenuItem("24");
-		
-		tamagno.add(tam_12);
-		tamagno.add(tam_16);
-		tamagno.add(tam_20);
-		tamagno.add(tam_24);
-		//----------------------------------------
+		//---------------------------------------
 		
 		mibarra.add(fuente);
 		mibarra.add(estilo);
-		mibarra.add(tamagno);
+		mibarra.add(tamaño);
 			
 		laminaMenu.add(mibarra);
 		add(laminaMenu, BorderLayout.NORTH);
 		
 		miArea = new JTextPane();
-		add(miArea, BorderLayout.CENTER);
+		font = new Font(fontName, fontType, fontSize);
+		miArea.setFont(font);
+		add(miArea);
+		
+		// Indicador de texto
+		label1 = new JLabel("");
+		add(label1, BorderLayout.EAST);
+		label2 = new JLabel("");
+		add(label2, BorderLayout.EAST);
+		label3 = new JLabel("");
+		add(label3, BorderLayout.EAST);
+		updateLabel();
 	}
 	
 	private class Gestiona_menus implements ActionListener {
-
+		private JMenu menu;
+		private String accion;
+		private String value;
+		
+		public Gestiona_menus (JMenu menu, String nombre, String accion, String value) {
+			this.menu = menu;
+			this.accion = accion;
+			this.value = value;
+			
+			JMenuItem item = new JMenuItem(nombre);
+			menu.add(item);
+			item.addActionListener(this);
+		}
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			miArea.setFont(new Font("courier", Font.PLAIN, 12));
+			switch (this.accion) {
+				case "fuente":
+					fontName = this.value;
+					break;
+				case "estilo": 
+					fontType = Integer.parseInt(this.value) + font.getStyle();
+					break;
+				case "tamaño": 
+					fontSize = Integer.parseInt(this.value);
+					break;
+			}
+			//System.out.println(this.value);
+			font = new Font(fontName, fontType, fontSize);
+			miArea.setFont(font);
+			updateLabel ();
 		}
 		
 	}
+	
+	public void updateLabel () {
+		label1.setText("Fuente: "+fontName);
+		label2.setText("Tipo: "+fontType);
+		label3.setText("Tamaño: "+fontSize);
+	}
+	
 	private JTextPane miArea;
 }
