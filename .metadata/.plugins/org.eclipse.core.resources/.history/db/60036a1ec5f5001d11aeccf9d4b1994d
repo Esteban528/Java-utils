@@ -1,0 +1,42 @@
+package Ventanas;
+
+import javax.swing.JFrame;
+import javax.swing.*;
+
+public class ClaseContainer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new ContainerFrame ();
+	}
+
+}
+
+class ContainerFrame extends JFrame {
+	public ContainerFrame () {
+		
+		setTitle("Prueba con containers");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		setBounds(250,250,500,300);
+		
+		ContainerPanel lamina = new ContainerPanel();
+		add(lamina);
+	}
+}
+
+class ContainerPanel extends JPanel {
+	public ContainerPanel () {
+		setLayout(null);
+		
+		JLabel nombre = new JLabel("Nombre :");
+		JLabel apellido = new JLabel("Apellido :");
+		JTextField c_nombre  = new JTextField("Nombre");
+		JTextField c_apellido= new JTextField("Apellido");
+		
+		add(nombre);
+		add(apellido);
+		add(c_nombre);
+		add(c_apellido);
+	}
+}
