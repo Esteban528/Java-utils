@@ -8,11 +8,12 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 
+// Usando hilos de ejecucion (threads)
 public class UsoThreads {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		// Se manda a llamar la interfaz graficas
 		JFrame marco=new MarcoRebote();
 		
 		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,7 +30,7 @@ class PelotaHilos implements Runnable {
 		componente = unComponente;
 	}
 	
-	public void run () {
+	public void run () { // Metodo que ejecuta el hilo
 		
 		System.out.println("Estado del hilo al comenzar: "+ Thread.currentThread().isInterrupted());
 		
@@ -57,11 +58,11 @@ class PelotaHilos implements Runnable {
 
 //Movimiento de la pelota-----------------------------------------------------------------------------------------
 
-class Pelota{
+class Pelota{ 
 	
 	// Mueve la pelota invirtiendo posición si choca con límites
 	
-	public void mueve_pelota(Rectangle2D limites){
+	public void mueve_pelota(Rectangle2D limites){ // Animacion de la pelota
 		
 		x+=dx;
 		
@@ -124,7 +125,7 @@ class Pelota{
 // Lámina que dibuja las pelotas----------------------------------------------------------------------
 
 
-class LaminaPelota extends JPanel{
+class LaminaPelota extends JPanel{ 
 	
 	//Añadimos pelota a la lámina
 	
@@ -152,7 +153,7 @@ class LaminaPelota extends JPanel{
 
 //Marco con lámina y botones------------------------------------------------------------------------------
 
-class MarcoRebote extends JFrame{
+class MarcoRebote extends JFrame{ 
 	
 	public MarcoRebote(){
 		
@@ -251,7 +252,6 @@ class MarcoRebote extends JFrame{
 			t3 = new Thread(r);
 			t3.start();
 		}
-		
 		
 		
 	}

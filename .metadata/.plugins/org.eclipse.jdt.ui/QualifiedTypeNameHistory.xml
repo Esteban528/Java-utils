@@ -8,4 +8,5 @@
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="java.awt.LayoutManager"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.locks.Condition"/>
 </qualifiedTypeNameHistroy>
