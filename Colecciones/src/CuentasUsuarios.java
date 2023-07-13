@@ -1,5 +1,6 @@
 import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 
 public class CuentasUsuarios {
 
@@ -17,9 +18,25 @@ public class CuentasUsuarios {
 		clientesBanco.add(cl3);
 		clientesBanco.add(cl4);
 		
+		
+		
+		//Iterador -- El iterador es mejor cuando hay que remover un objeto de la colección
+		Iterator<Cliente> it = clientesBanco.iterator();
+		
+		while(it.hasNext()) {
+			Cliente obj = it.next();
+			System.out.println(obj);
+			if(obj.getNombre().equals("Penelope")) {
+				System.out.print(" Removido\n");
+				it.remove();
+			}
+			
+		}
+		// ForEach
 		for (Cliente cliente : clientesBanco) {
 			System.out.println(cliente);
 		}
+		
 	}
 
 }
