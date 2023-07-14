@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.TreeSet;
 
 public class Prueba_TreeSet {
@@ -16,7 +17,7 @@ public class Prueba_TreeSet {
 		
 		Articulo primero = new Articulo(1, "Primer articulo");
 		Articulo segundo = new Articulo(2, "segundo articulo");
-		Articulo tercero = new Articulo(3, "tercero articulo");
+		Articulo tercero = new Articulo(3, "Este es el tercer articulo");
 		
 		TreeSet<Articulo> ordenaArticulos = new TreeSet<Articulo>();
 		ordenaArticulos.add(primero);
@@ -24,13 +25,30 @@ public class Prueba_TreeSet {
 		ordenaArticulos.add(segundo);
 		
 		for (Articulo articulo : ordenaArticulos) {
+			System.out.println("# "+articulo.getDescripcion());
+		}
+		
+		Articulo comparadorArticulos = new Articulo();
+		TreeSet<Articulo> ordenAlfabetico = new TreeSet<Articulo>(comparadorArticulos);
+		
+		ordenAlfabetico.add(primero);
+		ordenAlfabetico.add(tercero);
+		ordenAlfabetico.add(segundo);
+		
+		for (Articulo articulo : ordenAlfabetico) {
 			System.out.println(articulo.getDescripcion());
 		}
 	}
 
+	
 }
 
-class Articulo implements Comparable<Articulo> {
+class Articulo implements Comparable<Articulo>, Comparator<Articulo> {
+	private int numero_articulo;
+	private String descripcion;
+	
+	public Articulo () {}
+	
 	public Articulo (int num, String desc) {
 		numero_articulo=num;
 		descripcion=desc;
@@ -61,6 +79,12 @@ class Articulo implements Comparable<Articulo> {
 	public String toString() {
 		return "Articulo [numero_articulo=" + numero_articulo + ", descripcion=" + descripcion + "]";
 	}
-	private int numero_articulo;
-	private String descripcion;
+		
+	@Override
+	public int compare(Articulo o1, Articulo o2) {
+		String descripcionA=o1.getDescripcion();
+		String descripcionB=o2.getDescripcion();
+		
+		return descripcionA.compareTo(descripcionB);
+	}
 }
