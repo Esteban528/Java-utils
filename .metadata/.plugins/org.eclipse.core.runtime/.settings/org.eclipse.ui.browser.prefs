@@ -1,2 +1,4 @@
+browser-choice=0
 browsers=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<web-browsers current\="0">\r\n<system/>\r\n</web-browsers>
 eclipse.preferences.version=1
+internalWebBrowserHistory=http\://localhost\:3560/Primeros_pasos_JSP/EjemploDeclaraciones.jsp|*|http\://localhost\:3560/Primeros_pasos_JSP/EjemploScriptlet.jsp|*|http\://localhost\:3560/Primeros_pasos_JSP/EjemploExpresiones.jsp|*|http\://localhost\:3560/Primeros_pasos_JSP/saludo.jsp|*|

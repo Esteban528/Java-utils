@@ -7,7 +7,7 @@ public class Read {
 	public static void main(String[] args) {
 		try {
 			// Crear conexion
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://10.0.0.55:3306/javaTest?useSSL=false", "admin", "esteban123");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://10.0.0.55:3306/javaTest?allowPublicKeyRetrieval=true", "admin", "esteban123");
 			
 			// Crear objeto STATEMENT
 			
