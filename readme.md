@@ -1,3 +1,6 @@
+# Guia básica de JAVA
+He escrito esta guia fijandome en los conceptos básicos para desarrollar aplicaciones en el lenguaje JAVA, incluyendo de esta manera desde lo más facil a términos un poco más complejos. Espero ayudar a aquellos que quieren aprender o refrescar sus conocimientos en esta tecnología.
+
 # Java API
 
 La API de Java (Application Programming Interface) es un conjunto de clases, interfaces y métodos predefinidos en el lenguaje de programación Java que se utilizan para desarrollar aplicaciones y programas. Es una biblioteca de software que proporciona una serie de herramientas para programar en Java de manera más sencilla y eficiente.
